@@ -18,7 +18,7 @@ export default function RegiserForm() {
     const [confirmarSenha, setConfirmarSenha] = useState('')
 
 
-    const handleSubmit = (e: React.SyntheticEvent) => {
+    const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 
         if (!name.trim()){
@@ -44,6 +44,21 @@ export default function RegiserForm() {
             return;
         }
 
+        const response = await fetch('http://localhost:3001/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({nome: name, email: email, password: password})
+        })
+
+        const data = await response.json();
+
+        if (!response){
+            console.log('[ CADASTRO FRONTEND ] Erro na resposta da API')
+            throw new Error(data.message || 'Erro ao cadastrar')
+        }
+
         const newUser = [
             ...users,
             {id: Date.now(), name: name.trim(), email: email.trim()}
@@ -66,7 +81,7 @@ export default function RegiserForm() {
    return (
            <div className="flex items-center justify-center min-h-screen p-4">
                <Toaster position="top-right" />
-               <form className="border w-[220] h-130 rounded-md" onSubmit={handleSubmit}>
+               <form className="h-130 rounded-md" onSubmit={handleSubmit}>
                    <div className="flex items-center flex-col gap-5">
 
                         <div className="flex flex-col gap-2 items-center">
