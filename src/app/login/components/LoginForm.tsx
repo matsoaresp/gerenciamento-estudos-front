@@ -40,8 +40,8 @@ export function LoginForm() {
 
     return (
         <div className="flex items-center justify-center min-h-screen p-4">
-            <Toaster position="top-right" />
-            <form className="border w-[220] h-80 rounded-md" onSubmit={handleSubmit}>
+            <Toaster position="top-right"/>
+            <form className="h-80 rounded-md" onSubmit={handleSubmit}>
                 <div className="flex items-center flex-col gap-5 ">
                     
                     <div className="flex flex-col gap-2 items-center">
