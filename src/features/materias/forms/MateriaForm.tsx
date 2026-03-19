@@ -2,11 +2,21 @@
 import { useState } from "react";
 import { FormMaterias } from "../components/FormMaterias";
 import { toast } from "sonner";
+import { ListaMaterias } from "../components/ListaMaterias";
+
+interface Materia {
+
+    id: number,
+    titulo: string,
+    descricao: string;
+
+}
 
 export function MateriaForm () {
 
     const [titulo, setTitulo] = useState('');
     const [descricao, setDescricao] = useState('');
+    const [materia, setMateria] = useState<Materia[]>([]);
 
 
     const handleSubmit = () => {
@@ -23,17 +33,16 @@ export function MateriaForm () {
             toast.error('Descrição não foi preenchida')
             return
         }
-
-
     }
     return (
         <div>
             <FormMaterias
+            onSubmit={handleSubmit}
             onChangeTitulo={(e) => setTitulo(e.target.value)}
             onChangeDescricao={(e) => setDescricao(e.target.value)}
             titulo="Informe o titulo"
             descricao="Informe a descrição"
-            ></FormMaterias>
+            ></FormMaterias>  
         </div>
     )
 }

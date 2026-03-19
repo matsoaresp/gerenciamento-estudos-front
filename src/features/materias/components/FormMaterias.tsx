@@ -7,15 +7,18 @@ type FormMateriasProps = {
     descricao?: string
     onChangeTitulo: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onChangeDescricao : (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export function FormMaterias({ titulo,
     descricao,
     onChangeTitulo,
-    onChangeDescricao}: FormMateriasProps) {
+    onChangeDescricao,
+    onSubmit,
+}: FormMateriasProps) {
     return (
         <div>
-            <form action="" 
+            <form onSubmit={onSubmit}
                 >
                 <input
                 onChange ={onChangeTitulo}
