@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { toast } from 'sonner';
 import { LoginForm } from "../login/components/LoginForm";
-import RegiserForm from "./components/RegisterForm";
+import RegiserForm from "../public/components/RegisterForm";
 
 
 export default function Regiser() {
