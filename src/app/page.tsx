@@ -1,4 +1,4 @@
-import Login from "./public/login/page";
+import Login from "./(public)/login/page";
 
 
 
