@@ -31,27 +31,29 @@ export function LoginForm() {
         }
 
         const token = localStorage.getItem('token');
-        
+
         const response = await fetch('http://localhost:3001/auth/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
             },
             
             body: JSON.stringify({email: email, password: password})
         })
 
+        
         const data = await response.json()
-
+        
         if (!response.ok){
-            console.log('Erro na requisição da API')
-            throw new Error(data?.message || "logar")
+            throw new Error(data?.message || "Erro ao logar")
         }
+
+        localStorage.setItem("token", data.accessToken);
+        console.log("DATA LOGIN", data)
 
         toast.success('Login realizado com sucesso!')
         setTimeout(() => {
             console.log("Redirecionando para pagina de tarefas")
-            router.push("/criar-task")
+            router.push("/materias")
         }, 1500)
     };
 

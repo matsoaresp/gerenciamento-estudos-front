@@ -1,17 +1,20 @@
 export async function criarMateria (data: any) {
 
+    const token = localStorage.getItem('token');
     const response = await fetch('http://localhost:3001/materia', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(data)
     })
 
-    const result = await response.json()
 
     if (!response.ok){
-        console.log(result)
-        throw new Error(data.message || "Não foi possivel criar Materia")
+        const error = await response.json()
+        console.log(error)
+        throw new Error(error.message || "Não foi possivel criar Materia")
     }
 
-    return result;
+    return response.json();
 }

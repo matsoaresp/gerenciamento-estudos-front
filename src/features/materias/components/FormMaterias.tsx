@@ -23,13 +23,11 @@ export function FormMaterias({ titulo,
                 <input
                 onChange ={onChangeTitulo}
                 type="text"
-                value={''}
                 placeholder= {titulo}/>
 
                 <input
                 onChange={onChangeDescricao}
                 type="text" 
-                value = {''}
                 placeholder= {descricao} 
                 name="" 
                 id="" />

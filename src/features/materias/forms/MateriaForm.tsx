@@ -34,21 +34,21 @@ export function MateriaForm () {
             toast.error('Descrição não foi preenchida')
             return
         }
-        setNome("")
-        setDescricao("")
+        
         try{
             await criarMateria ({
                 nome,
                 descricao
-                
             });
-
+            
             toast.success('Matéria criada com sucesso')
             
         }catch(error: any) {
             
             toast.error(error.message || 'Erro ao criar materia')
         }
+        setNome("")
+        setDescricao("")
     }
     return (
         <div>
