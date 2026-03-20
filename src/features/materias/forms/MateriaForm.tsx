@@ -1,9 +1,10 @@
 'use client';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormMaterias } from "../components/FormMaterias";
 import { toast, Toaster } from "sonner";
 import { ListaMaterias } from "../components/ListaMaterias";
 import { criarMateria } from "../service/CriarMateria";
+import { listarMaterias} from "../service/ListarMateria";
 
 interface Materia {
 
@@ -17,7 +18,7 @@ export function MateriaForm () {
 
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [materia, setMateria] = useState<Materia[]>([]);
+    const [materias, setMaterias] = useState<Materia[]>([]);
 
 
     const handleSubmit = async () => {
@@ -50,16 +51,41 @@ export function MateriaForm () {
         setNome("")
         setDescricao("")
     }
+
+    useEffect(() => {
+
+        const buscarMaterias = async () => {
+
+            try{
+                const data =  await listarMaterias();
+                setMaterias(data)
+
+
+            }catch(error: any){
+                toast.error(error.message || 'Erro ao listar materias')
+            }
+        }
+
+        buscarMaterias()
+
+    }, [])
+
+    
     return (
         <div>
             <Toaster position="top-right"/>
             <FormMaterias
             onClick={handleSubmit}
+            titulo = {nome}
+            descricao = {descricao}
             onChangeTitulo={(e) => setNome(e.target.value)}
             onChangeDescricao={(e) => setDescricao(e.target.value)}
-            titulo="Informe o titulo"
-            descricao="Informe a descrição"
             ></FormMaterias>  
+            <ListaMaterias
+            materias={materias}
+            >
+            </ListaMaterias>
+
         </div>
     )
 }
