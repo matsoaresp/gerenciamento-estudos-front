@@ -2,38 +2,41 @@
 import Button from "@/src/components/Button";
 
 type FormMateriasProps = {
-
+    
     titulo: string;
     descricao?: string
     onChangeTitulo: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onChangeDescricao : (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export function FormMaterias({ titulo,
     descricao,
     onChangeTitulo,
     onChangeDescricao,
-    onSubmit,
+    onClick,
 }: FormMateriasProps) {
     return (
         <div>
-            <form onSubmit={onSubmit}
+            <form
                 >
                 <input
                 onChange ={onChangeTitulo}
                 type="text"
+                value={''}
                 placeholder= {titulo}/>
 
                 <input
                 onChange={onChangeDescricao}
                 type="text" 
+                value = {''}
                 placeholder= {descricao} 
                 name="" 
                 id="" />
 
                 <Button
-                type= "submit"
+                onClick={onClick}
+                type= "button"
                 text="Enviar"
                 ></Button>
             </form>

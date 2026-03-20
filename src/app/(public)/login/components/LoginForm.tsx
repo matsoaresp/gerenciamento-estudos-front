@@ -9,7 +9,7 @@ export function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e:SyntheticEvent) => {
+    const handleSubmit = async (e:SyntheticEvent) => {
         e.preventDefault();
 
          if (!email.trim() && !password.trim()) {
@@ -28,6 +28,24 @@ export function LoginForm() {
         if (password.length <= 8) {
             toast.error('A senha deve tem no mínimo 8 caracteres')
             return;
+        }
+
+        const token = localStorage.getItem('token');
+        
+        const response = await fetch('http://localhost:3001/auth/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            
+            body: JSON.stringify({email: email, password: password})
+        })
+
+        const data = await response.json()
+
+        if (!response.ok){
+            console.log('Erro na requisição da API')
+            throw new Error(data?.message || "logar")
         }
 
         toast.success('Login realizado com sucesso!')

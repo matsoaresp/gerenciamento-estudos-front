@@ -1,31 +1,32 @@
 'use client';
 import { useState } from "react";
 import { FormMaterias } from "../components/FormMaterias";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 import { ListaMaterias } from "../components/ListaMaterias";
+import { criarMateria } from "../service/CriarMateria";
 
 interface Materia {
 
     id: number,
-    titulo: string,
+    nome: string,
     descricao: string;
 
 }
 
 export function MateriaForm () {
 
-    const [titulo, setTitulo] = useState('');
+    const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [materia, setMateria] = useState<Materia[]>([]);
 
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
-        if (!titulo.trim() || !descricao.trim()){
+        if (!nome.trim() || !descricao.trim()){
             toast.error('Nenhum campo foi preenchido')
             return
         }
-        if (!titulo.trim()){
+        if (!nome.trim()){
             toast.error('Titulo não foi preenchido')
             return
         }
@@ -33,12 +34,28 @@ export function MateriaForm () {
             toast.error('Descrição não foi preenchida')
             return
         }
+        setNome("")
+        setDescricao("")
+        try{
+            await criarMateria ({
+                nome,
+                descricao
+                
+            });
+
+            toast.success('Matéria criada com sucesso')
+            
+        }catch(error: any) {
+            
+            toast.error(error.message || 'Erro ao criar materia')
+        }
     }
     return (
         <div>
+            <Toaster position="top-right"/>
             <FormMaterias
-            onSubmit={handleSubmit}
-            onChangeTitulo={(e) => setTitulo(e.target.value)}
+            onClick={handleSubmit}
+            onChangeTitulo={(e) => setNome(e.target.value)}
             onChangeDescricao={(e) => setDescricao(e.target.value)}
             titulo="Informe o titulo"
             descricao="Informe a descrição"

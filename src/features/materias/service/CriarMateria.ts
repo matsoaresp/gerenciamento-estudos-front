@@ -9,6 +9,7 @@ export async function criarMateria (data: any) {
     const result = await response.json()
 
     if (!response.ok){
+        console.log(result)
         throw new Error(data.message || "Não foi possivel criar Materia")
     }
 
