@@ -5,14 +5,14 @@ type MateriasProps = {
     descricao?: string;
 }
 
-export function ListaMaterias ({metas}: {metas: MateriasProps[]}) {
+export function ListaMaterias ({materias}: {materias: MateriasProps[]}) {
 
     return  (
         <div>
-            {metas.map(meta => (
-                <div key={meta.id} className="p-4  shadow">
-                    <h2 className="font-semibold">{meta.nome}</h2>
-                    <p> Progresso: {meta.descricao}</p>
+            {materias.map(materia => (
+                <div key={materia.id} className="p-4  shadow">
+                    <h2 className="font-semibold">{materia.nome}</h2>
+                    <p> Progresso: {materia.descricao}</p>
                 </div>
             ))}
         </div>
