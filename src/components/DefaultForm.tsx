@@ -1,21 +1,23 @@
 'use client'
 import Button from "@/src/components/Button";
 
-type FormMateriasProps = {
+type DefaultFormProps = {
     
     titulo: string;
     descricao?: string
     onChangeTitulo: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onChangeDescricao : (e: React.ChangeEvent<HTMLInputElement>) => void;
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    className?: string;
 }
 
-export function FormMaterias({ titulo,
+export function DefaultForm({ titulo,
     descricao,
     onChangeTitulo,
     onChangeDescricao,
     onClick,
-}: FormMateriasProps) {
+    className
+}: DefaultFormProps) {
     return (
         <div>
             <form
@@ -31,9 +33,7 @@ export function FormMaterias({ titulo,
                 type="text" 
                 placeholder="Informe a descrição"
                 value={descricao}
-                
-                name="" 
-                id="" />
+                 />
 
                 <Button
                 onClick={onClick}
