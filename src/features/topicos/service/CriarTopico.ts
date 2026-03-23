@@ -1,4 +1,9 @@
-export async function CriarTopico (data: any) {
+export async function CriarTopico (
+    data: {
+        titulo: string; 
+        descricao: string; 
+        materiaId: number | null
+    }) {
 
     const token = localStorage.getItem('token');
     const response = await fetch('http://localhost:3001/topicos', {
