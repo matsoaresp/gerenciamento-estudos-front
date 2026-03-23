@@ -1,17 +1,15 @@
 'use client';
 import { useEffect, useState } from "react";
-import { FormMaterias } from "../components/FormMaterias";
 import { toast, Toaster } from "sonner";
 import { ListaMaterias } from "../components/ListaMaterias";
 import { criarMateria } from "../service/CriarMateria";
 import { listarMaterias} from "../service/ListarMateria";
+import { DefaultForm } from "@/src/components/DefaultForm";
 
 interface Materia {
-
     id: number,
     nome: string,
-    descricao: string;
-
+    descricao: string
 }
 
 export function MateriaForm () {
@@ -41,7 +39,8 @@ export function MateriaForm () {
                 nome,
                 descricao
             });
-            
+            const data = await listarMaterias()
+            setMaterias(data)
             toast.success('Matéria criada com sucesso')
             
         }catch(error: any) {
@@ -65,22 +64,21 @@ export function MateriaForm () {
                 toast.error(error.message || 'Erro ao listar materias')
             }
         }
-
-        buscarMaterias()
-
+        buscarMaterias()        
     }, [])
 
     
     return (
         <div>
             <Toaster position="top-right"/>
-            <FormMaterias
+            <DefaultForm
+            className=""
             onClick={handleSubmit}
             titulo = {nome}
             descricao = {descricao}
             onChangeTitulo={(e) => setNome(e.target.value)}
             onChangeDescricao={(e) => setDescricao(e.target.value)}
-            ></FormMaterias>  
+            ></DefaultForm>  
             <ListaMaterias
             materias={materias}
             >
