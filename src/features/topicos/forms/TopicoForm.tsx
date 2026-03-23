@@ -1,9 +1,8 @@
 'use client';
-
-import { DefaultForm } from "@/src/components/DefaultForm";
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
 import { CriarTopico } from "../service/CriarTopico";
+import { TopicosForm } from "../components/TopicosForm";
 
 
 interface Topico {
@@ -50,24 +49,22 @@ export function TopicoForm () {
         }
         setTitulo("")
         setDescricao("")
-
     }
 
 
     return (
-        <div>
-
+       <div className="min-h-screen  p-6 md:p-12 font-sans flex flex-col items-center gap-16">
+         <div className="w-full max-w-3xl">
+            <h2 className="text-4xl font-black uppercase mb-6 italic">/ Adicionar Novo Tópico</h2>
         <Toaster position="top-right"/>
-            <DefaultForm
+            <TopicosForm
             onClick={handleSubmit}
             titulo = {titulo}
             descricao = {descricao}
             onChangeTitulo={(e) => setTitulo(e.target.value)}
             onChangeDescricao={(e) => setDescricao(e.target.value)}
-            ></DefaultForm>  
-           
-
-
+            ></TopicosForm>  
+        </div>
         </div>
     )
 }
