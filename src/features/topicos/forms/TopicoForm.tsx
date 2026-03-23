@@ -10,13 +10,16 @@ interface Topico {
     id: number,
     titulo: string,
     descricao: string,
+    materiaId: number,
 }
 
 export function TopicoForm () {
 
     const [titulo, setTitulo] = useState('');
     const [descricao, setDescricao] = useState('');
+    const [materiaId, setMateriaId] = useState<number | null>(null);
     const [topicos, setTopicos] = useState<Topico[]>([]);
+    
 
     const handleSubmit = async () => {
 
@@ -38,7 +41,8 @@ export function TopicoForm () {
         try {
             await CriarTopico ({
                 titulo,
-                descricao
+                descricao,
+                materiaId,
             });
 
         }catch(error: any){
@@ -55,7 +59,6 @@ export function TopicoForm () {
 
         <Toaster position="top-right"/>
             <DefaultForm
-            className=""
             onClick={handleSubmit}
             titulo = {titulo}
             descricao = {descricao}
