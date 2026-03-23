@@ -59,42 +59,53 @@ export function LoginForm() {
 
 
     return (
-        <div className="flex items-center justify-center min-h-screen p-4">
+        <div className="flex items-center justify-center min-h-screen">
             <Toaster position="top-right"/>
-            <form className="h-80 rounded-md" onSubmit={handleSubmit}>
+            <form className="relative bg-white border-4 border-black rounded-xl p-10 flex flex-col gap-6 w-[450px]
+  shadow-[-8px_8px_0px_0px_rgba(0,0,0,1)]"onSubmit={handleSubmit}>
                 <div className="flex items-center flex-col gap-5 ">
                     
-                    <div className="flex flex-col gap-2 items-center">
-                        <label className="flex items-center " htmlFor="email">Email</label>
+                     <div className="flex flex-col gap-3 items-center">
+                        <label className="font-black uppercase text-lg tracking-widest text-black">E-mail</label>
                         <input
                         placeholder="Informe seu e-mail"
                             id="email"
                             type="text"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="border rounded  w-64 p-15 bg-white h-13 w-100"
+                            className="border-4 border-black p-4 text-2xl font-bold outline-none h-15 w-150
+                                 placeholder:text-gray-700 leading-relaxed placeholder:italic placeholder:font-medium
+                                 focus:bg-yellow-50 focus:translate-x-1 focus:translate-y-1 transition-all
+                                 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-none"
                         />
                     </div>
 
 
-                    <div className="flex flex-col gap-2 items-center">
-                        <label htmlFor="senha">Senha</label>
+                    <div className="flex flex-col gap-3 items-center">
+                       <label className="font-black uppercase text-lg tracking-widest text-black">Senha</label>
                         <input
                         placeholder="Informe sua senha"
                             id="senha"
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="border rounded w-64 p-15 bg-white h-13 w-100"
+                            className=" border-4 border-black p-4 text-2xl font-bold outline-none h-15 w-150
+                                 placeholder:text-gray-700 leading-relaxed placeholder:italic placeholder:font-medium
+                                 focus:bg-yellow-50 focus:translate-x-1 focus:translate-y-1 transition-all
+                                 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-none "
                         />
                     </div>
                    
 
-                    <div className="flex gap-6">
+                    <div className="flex gap-8">
                     <div className="">
                         <button
                             type="submit"
-                            className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 w-25"
+                             className="mt-2 bg-[#00FF85] text-black border-4 border-black py-4 px-8 h-15 flex items-center
+                               text-xl font-black uppercase tracking-tighter 
+                               shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] 
+                               hover:shadow-none hover:translate-x-1 hover:translate-y-1 
+                               active:bg-[#00e677] transition-all"
                         >
                             Entrar
                         </button>
@@ -104,7 +115,11 @@ export function LoginForm() {
                         <button
                             type="button"
                             onClick={() => router.push("/cadastro")}
-                            className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 w-40"
+                             className="mt-5 bg-[#e6d522] text-black border-4 border-black py-4 px-8 h-15 flex items-center
+                               text-xl font-black uppercase tracking-tighter 
+                               shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] 
+                               hover:shadow-none hover:translate-x-1 hover:translate-y-1 
+                               active:bg-[#e6d522] transition-all"
                         >
                             Cadastrar-se
                         </button>
