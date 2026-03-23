@@ -1,27 +1,32 @@
 import React from 'react';
 
-type MateriasProps = {
+
+
+export type Materia = {
   id: number;
   nome: string;
   descricao?: string;
 };
 
-export function ListaMaterias({ materias }: { materias: MateriasProps[] }) {
+// Adicionamos a prop 'onCriarTopico' para receber a função que abre o modal
+type ListaMateriasProps = {
+  materias: Materia[];
+  onCriarTopico: (materia: Materia) => void; 
+};
+
+export function ListaMaterias({ materias, onCriarTopico }: ListaMateriasProps) {
   return (
-    <div className="min-h-screen  p-6 md:p-12 font-sans">
+    <div className="w-full font-sans">
       <div className="max-w-3xl mx-auto">
-        
         <h1 className="text-4xl font-black text-black mb-12 tracking-tight uppercase italic">
           / Minhas Matérias
         </h1>
 
         <div className="grid gap-8">
           {materias.map((materia, index) => (
-            <div 
-              key={materia.id} 
-              className="relative group"
-            >
+            <div key={materia.id} className="relative group">
               <div className="absolute inset-0 bg-black rounded-lg translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform"></div>
+              
               <div className="relative bg-white border-4 border-black rounded-lg p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 overflow-hidden">
                 
                 <div className="absolute -right-4 -top-4 text-8xl font-black text-gray-100 -z-10 select-none">
@@ -39,9 +44,7 @@ export function ListaMaterias({ materias }: { materias: MateriasProps[] }) {
 
                 <button
                   className="bg-[#332FD0] text-white border-2 border-black px-6 py-3 font-bold uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:bg-[#242193]"
-                  onClick={() => {
-                    window.location.href = `/topicos/?materiaId=${materia.id}`;
-                  }}
+                  onClick={() => onCriarTopico(materia)} // CHAMA A FUNÇÃO EM VEZ DE REDIRECIONAR
                 >
                   Criar Tópico
                 </button>
