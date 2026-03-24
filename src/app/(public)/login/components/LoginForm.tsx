@@ -60,7 +60,7 @@ export function LoginForm() {
 
     return (
         <div className="flex items-center justify-center min-h-screen">
-            <Toaster position="top-right"/>
+            <Toaster position="top-right" toastOptions={{className: "bg-red-500 text-white border-2 border-black",}}/>
             <form className="relative bg-white border-4 border-black rounded-xl p-10 flex flex-col gap-6 w-[450px]
   shadow-[-8px_8px_0px_0px_rgba(0,0,0,1)]"onSubmit={handleSubmit}>
                 <div className="flex items-center flex-col gap-5 ">
@@ -101,7 +101,7 @@ export function LoginForm() {
                     <div className="">
                         <button
                             type="submit"
-                             className="mt-2 bg-[#00FF85] text-black border-4 border-black py-4 px-8 h-15 flex items-center
+                             className="mt-2 bg-[#00FF85] text-black border-4 border-black py-4 px-8 h-15 flex items-center w-30 justify-center
                                text-xl font-black uppercase tracking-tighter 
                                shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] 
                                hover:shadow-none hover:translate-x-1 hover:translate-y-1 
@@ -115,7 +115,7 @@ export function LoginForm() {
                         <button
                             type="button"
                             onClick={() => router.push("/cadastro")}
-                             className="mt-5 bg-[#e6d522] text-black border-4 border-black py-4 px-8 h-15 flex items-center
+                             className="mt-5 bg-[#e6d522] text-black border-4 border-black py-4 px-8 h-15 flex items-center w-40
                                text-xl font-black uppercase tracking-tighter 
                                shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] 
                                hover:shadow-none hover:translate-x-1 hover:translate-y-1 

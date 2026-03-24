@@ -5,6 +5,7 @@ import { ListaMaterias, Materia } from "../components/ListaMaterias";
 import { criarMateria } from "../service/CriarMateria";
 import { listarMaterias } from "../service/ListarMateria";
 import { MateriasForm } from "../components/MateriasForm";
+import Aside from "@/src/components/Aside";
 
 
 
@@ -60,9 +61,10 @@ export function MateriaForm() {
       
         <div className="min-h-screen  p-6 md:p-12 font-sans flex flex-col items-center gap-16">
             <Toaster position="top-right" />
+            <Aside></Aside>
             
             <div className="w-full max-w-3xl">
-                <h2 className="text-4xl font-black uppercase mb-6 italic">/ Adicionar Nova Matéria</h2>
+                <h2 className="text-4xl cursor-pointer font-black uppercase mb-6 italic">/ Adicionar Nova Matéria</h2>
                 
                 <MateriasForm
                     titulo={nome}
@@ -99,7 +101,7 @@ export function MateriaForm() {
                         X
                     </button>
 
-                    <h3 className="text-3xl font-black uppercase mb-8 italic">
+                    <h3 className="text-3xl cursor-pointer font-black uppercase mb-8 italic">
                         / Novo Tópico: {materiaSelecionada?.nome}
                     </h3>
 
@@ -114,7 +116,7 @@ export function MateriaForm() {
                         />
                         <button 
                             type="button"
-                            className="bg-yellow-400 border-4 border-black py-4 font-black uppercase text-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+                            className=" cursor-pointerbg-yellow-400 border-4 border-black py-4 font-black uppercase text-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
                         >
                             Salvar Tópico +
                         </button>

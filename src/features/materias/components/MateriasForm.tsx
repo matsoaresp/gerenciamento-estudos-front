@@ -55,7 +55,7 @@ export function MateriasForm({
                     onClick={onClick}
                     type="button"
                     text="Salvar Matéria +"
-                    className="mt-2 bg-[#00FF85] text-black border-4 border-black py-4 px-8 h-15 flex items-center
+                    className="mt-2 cursor-pointer bg-[#00FF85] text-black border-4 border-black py-4 px-8 h-15 flex items-center
                                text-xl font-black uppercase tracking-tighter 
                                shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] 
                                hover:shadow-none hover:translate-x-1 hover:translate-y-1 
