@@ -1,14 +1,9 @@
-import React from 'react';
-
-
-
 export type Materia = {
   id: number;
   nome: string;
   descricao?: string;
 };
 
-// Adicionamos a prop 'onCriarTopico' para receber a função que abre o modal
 type ListaMateriasProps = {
   materias: Materia[];
   onCriarTopico: (materia: Materia) => void; 
@@ -43,8 +38,8 @@ export function ListaMaterias({ materias, onCriarTopico }: ListaMateriasProps) {
                 </div>
 
                 <button
-                  className="bg-[#332FD0] text-white border-2 border-black px-6 py-3 font-bold uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:bg-[#242193]"
-                  onClick={() => onCriarTopico(materia)} // CHAMA A FUNÇÃO EM VEZ DE REDIRECIONAR
+                  className="bg-[#332FD0] cursor-pointer text-white border-2 border-black px-6 py-3 font-bold uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:bg-[#242193]"
+                  onClick={() => onCriarTopico(materia)} 
                 >
                   Criar Tópico
                 </button>
