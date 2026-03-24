@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast, Toaster } from "sonner";
 import { CriarTopico } from "../service/CriarTopico";
 import { TopicosForm } from "../components/TopicosForm";
+import Aside from "@/src/components/Aside";
 
 
 interface Topico {
@@ -57,6 +58,9 @@ export function TopicoForm () {
          <div className="w-full max-w-3xl">
             <h2 className="text-4xl font-black uppercase mb-6 italic">/ Adicionar Novo Tópico</h2>
         <Toaster position="top-right"/>
+        <Aside>
+            
+        </Aside>
             <TopicosForm
             onClick={handleSubmit}
             titulo = {titulo}

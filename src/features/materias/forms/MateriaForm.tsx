@@ -16,8 +16,7 @@ export function MateriaForm() {
     const [materiaSelecionada, setMateriaSelecionada] = useState<Materia | null>(null);
     const [isModalAberto, setIsModalAberto] = useState(false);
 
-    const abrirModalTopico = (materia: Materia) => {
-        setMateriaSelecionada(materia);
+    const abrirModalTopico = () => {
         setIsModalAberto(true);
 };
 
@@ -63,18 +62,7 @@ export function MateriaForm() {
             <Toaster position="top-right" />
             <Aside></Aside>
             
-            <div className="w-full max-w-3xl">
-                <h2 className="text-4xl cursor-pointer font-black uppercase mb-6 italic">/ Adicionar Nova Matéria</h2>
-                
-                <MateriasForm
-                    titulo={nome}
-                    descricao={descricao}
-                    onChangeTitulo={(e) => setNome(e.target.value)}
-                    onChangeDescricao={(e) => setDescricao(e.target.value)}
-                    onClick={handleSubmit}
-                    className="p-16" 
-                />
-            </div>
+            
 
             <div className="w-full max-w-3xl">
                 <ListaMaterias onCriarTopico={abrirModalTopico} materias={materias}/>
@@ -89,10 +77,6 @@ export function MateriaForm() {
                 />
 
                 <div className="relative bg-white border-8 border-black w-full max-w-2xl shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
-
-
-
-                    
                 <div className="p-10 pt-14">
                     <button 
                         onClick={() => setIsModalAberto(false)}
@@ -101,26 +85,20 @@ export function MateriaForm() {
                         X
                     </button>
 
-                    <h3 className="text-3xl cursor-pointer font-black uppercase mb-8 italic">
-                        / Novo Tópico: {materiaSelecionada?.nome}
-                    </h3>
+                    <div className="w-full max-w-3xl">
+                        <h2 className="text-4xl cursor-pointer font-black uppercase mb-6 italic">/ Adicionar Nova Matéria</h2>
+                
+                    </div>
 
-                    <form className="flex flex-col gap-8">
-                        <input 
-                            placeholder="Título do Tópico" 
-                            className="border-4 border-black p-4 text-xl font-bold outline-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-none transition-all"
-                        />
-                        <textarea 
-                            placeholder="Conteúdo do tópico..." 
-                            className="border-4 border-black p-4 text-lg font-medium h-40 outline-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-none transition-all"
-                        />
-                        <button 
-                            type="button"
-                            className=" cursor-pointerbg-yellow-400 border-4 border-black py-4 font-black uppercase text-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
-                        >
-                            Salvar Tópico +
-                        </button>
-                    </form>
+                    <MateriasForm
+                    titulo={nome}
+                    descricao={descricao}
+                    onChangeTitulo={(e) => setNome(e.target.value)}
+                    onChangeDescricao={(e) => setDescricao(e.target.value)}
+                    onClick={handleSubmit}
+                    className="p-16" 
+                />
+                    
                 </div>
                 </div>
             </div>
