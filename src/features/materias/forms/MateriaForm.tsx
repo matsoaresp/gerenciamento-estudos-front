@@ -18,16 +18,13 @@ export function MateriaForm() {
 
     const [materiaSelecionada, setMateriaSelecionada] = useState<Materia | null>(null);
 
-    // 🔥 NOVO CONTROLE DO MODAL
     const [modalTipo, setModalTipo] = useState<"form" | "detalhes" | null>(null);
 
-    // 👉 ABRIR FORM
     const abrirModalForm = () => {
         setMateriaSelecionada(null);
         setModalTipo("form");
     };
 
-    // 👉 SUBMIT
     const handleSubmit = async () => {
         if (!nome.trim() || !descricao.trim()) {
             toast.error('Preencha todos os campos');
@@ -45,7 +42,7 @@ export function MateriaForm() {
 
             setNome("");
             setDescricao("");
-            setModalTipo(null); // 🔥 fecha modal
+            setModalTipo(null); 
 
             toast.success('Matéria criada com sucesso!');
         } catch (error: any) {
@@ -53,7 +50,6 @@ export function MateriaForm() {
         }
     };
 
-    // 👉 LISTAR
     useEffect(() => {
         const buscarMaterias = async () => {
             try {
@@ -73,7 +69,7 @@ export function MateriaForm() {
 
             <div className="w-full max-w-3xl">
                 <ListaMaterias 
-                    openModal={abrirModalForm}// 🔥 botão +
+                    openModal={abrirModalForm}
                     materias={materias}
                     onSelectMateria={(materia) => {
                         setMateriaSelecionada(materia);
@@ -83,41 +79,39 @@ export function MateriaForm() {
             </div>
 
             {modalTipo && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setModalTipo(null)}
+        />
 
-                    <div 
-                        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-                        onClick={() => setModalTipo(null)}
-                    />
+        <div className="relative w-full max-w-2xl">
+            <button 
+                onClick={() => setModalTipo(null)}
+                className="absolute -top-3 -right-4 right-0 bg-red-500 text-white border-4 border-black w-10 h-10 font-black text-xl hover:scale-110 transition-all z-10"
+            >
+                X
+            </button>
 
-                    <div className="relative  border-black w-full max-w-2xl ">
-                        <div className="p-10 pt-14">
+            {modalTipo === "detalhes" && materiaSelecionada && (
 
-                            <button 
-                                onClick={() => setModalTipo(null)}
-                                className="absolute -top-6 -right-15 bg-red-500 text-white border-4 border-black w-12 h-12 font-black text-2xl hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
-                            >
-                                X
-                            </button>
-
-
-                            {modalTipo === "detalhes" && materiaSelecionada && (
-                                <DadosMateria materia={materiaSelecionada} />
-                            )}
-
-                            {modalTipo === "form" && (
-                                <MateriasForm
-                                    titulo={nome}
-                                    onChangeTitulo={(e) => setNome(e.target.value)}
-                                    onChangeDescricao={(e) => setDescricao(e.target.value)}
-                                    onClick={handleSubmit}
-                                />
-                            )}
-
-                        </div>
-                    </div>
-                </div>
+            <div className="bg-white border-4 border-black rounded-xl p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <DadosMateria materia={materiaSelecionada} />
+            </div>
             )}
+
+        {modalTipo === "form" && (
+            <MateriasForm
+            titulo={nome}
+            descricao={descricao}
+            onChangeTitulo={(e) => setNome(e.target.value)}
+            onChangeDescricao={(e) => setDescricao(e.target.value)}
+            onClick={handleSubmit}
+    />
+    )}
+        </div>
+    </div>
+)}
         </div>
     );
 }
