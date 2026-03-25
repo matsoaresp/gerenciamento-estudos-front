@@ -14,9 +14,6 @@ type ListaMateriasProps = {
 
 export function ListaMaterias({ materias, onSelectMateria, openModal }: ListaMateriasProps) {
 
-
-
-  
   return (
     <div className="w-full font-sans">
       <div className="max-w-3xl mx-auto ">
@@ -56,13 +53,12 @@ export function ListaMaterias({ materias, onSelectMateria, openModal }: ListaMat
   
         </div>
       </div>
-
       <Button
         onClick={openModal}
         type="button"
         text="+"
-        className="fixed bottom-25 right-45 w-35 h-35 justify-right rounded-full cursor-pointer border-4 border-blackrounded-xl  bg-[#00FF85] hover:shadow-none hover:translate-x-1 hover:translate-y-1 
-                   active:bg-[#00e677] text-black text-xl font-black uppercase tracking-tighter"
+        className="fixed bottom-25 right-45 w-35 h-34 justify-right rounded-full cursor-pointer border-4 border-blackrounded-xl  bg-[#00FF85] hover:shadow-none hover:translate-x-1 hover:translate-y-1 
+                   active:bg-[#00e677] text-black text-6xl font-black uppercase tracking-tighter"
       >
 
       </Button>

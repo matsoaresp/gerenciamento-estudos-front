@@ -3,6 +3,7 @@ import Button from "@/src/components/Button";
 
 type TopicosFormProps = {
     titulo: string;
+    materiaId: number;
     descricao?: string;
     onChangeTitulo: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onChangeDescricao: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,54 +14,48 @@ type TopicosFormProps = {
 export function TopicosForm({ 
     titulo,
     descricao,
+    materiaId,
     onChangeTitulo,
     onChangeDescricao,
     onClick,
     className
 }: TopicosFormProps) {
     return (
-        <div className={`relative w-full max-w-2xl group ${className}`}>
-            <div className="absolute inset-0 bg-black rounded-xl translate-x-2 translate-y-2"></div>
-            
-            <form className="relative bg-white border-4 border-black rounded-xl p-8 flex flex-col gap-6 h-90 w-200 p-20">
-                <div className="flex flex-col gap-6">
-                    <label className="font-black uppercase text-base tracking-widest text-black">Título do Tópico</label>
-                    <input
-                        onChange={onChangeTitulo}
-                        type="text"
-                        value={titulo}
-                        placeholder="Informe o titulo"
-                        className="border-4 border-black p-4 text-2xl font-bold outline-none h-15
-                                 placeholder:text-gray-700 leading-relaxed placeholder:italic placeholder:font-medium
-                                 focus:bg-yellow-50 focus:translate-x-1 focus:translate-y-1 transition-all
-                                 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-none"
-                    />
-                </div>
+        <div className={`flex items-center justify-center ${className}`}>
+            <form className="relative bg-white border-2 border-black rounded-xl p-10 flex flex-col gap-6 w-[450px] shadow-[-8px_8px_0px_0px_rgba(0,0,0,1)] ring-1 ring-black/5">
+                <div className="flex items-center flex-col gap-5">
+                    
+                    <div className="flex flex-col gap-3 items-center w-full">
+                        <label className="font-black uppercase text-lg tracking-widest text-black">Título do Tópico</label>
+                        <input
+                            placeholder="Informe o título"
+                            type="text"
+                            value={titulo}
+                            onChange={onChangeTitulo}
+                            className="border-2 border-black p-4 text-2xl font-bold outline-none h-15 w-full rounded-lg placeholder:text-gray-400 placeholder:italic focus:bg-yellow-50 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-none"
+                        />
+                    </div>
 
-                <div className="flex flex-col gap-2">
-                    <label className="font-black uppercase text-base tracking-widest text-black">Descrição</label>
-                    <input
-                        onChange={onChangeDescricao}
-                        type="text" 
-                        placeholder="Informe a descrição"
-                        value={descricao}
-                        
-                        className=" border-4 border-black p-4 text-2xl font-bold outline-none h-15
-                                 placeholder:text-gray-700 leading-relaxed placeholder:italic placeholder:font-medium
-                                 focus:bg-yellow-50 focus:translate-x-1 focus:translate-y-1 transition-all
-                                 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-none "
-                    />
+                    <div className="flex flex-col gap-3 items-center w-full">
+                        <label className="font-black uppercase text-lg tracking-widest text-black">Descrição</label>
+                        <input
+                            placeholder="Informe a descrição"
+                            type="text" 
+                            value={descricao}
+                            onChange={onChangeDescricao}
+                            className="border-2 border-black p-4 text-2xl font-bold outline-none h-15 w-full rounded-lg placeholder:text-gray-400 placeholder:italic focus:bg-yellow-50 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-none"
+                        />
+                    </div>
+
+                    <div className="w-full pt-2">
+                        <Button
+                            onClick={onClick}
+                            type="button"
+                            text="Salvar Tópico +"
+                            className="mt-2 bg-[#00FF85] text-black border-2 border-black border-b-4 py-4 px-8 h-15 flex items-center justify-center w-full rounded-xl text-xl font-black uppercase tracking-tighter hover:brightness-105 active:border-b-2 active:translate-y-[2px] transition-all shadow-md cursor-pointer"
+                        />
+                    </div>
                 </div>
-                <Button
-                    onClick={onClick}
-                    type="button"
-                    text="Salvar Tópico +"
-                    className="mt-2 bg-[#00FF85] text-black border-4 border-black py-4 px-8 h-15 flex items-center
-                               text-xl font-black uppercase tracking-tighter 
-                               shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] 
-                               hover:shadow-none hover:translate-x-1 hover:translate-y-1 
-                               active:bg-[#00e677] transition-all"
-                />
             </form>
         </div>
     )
