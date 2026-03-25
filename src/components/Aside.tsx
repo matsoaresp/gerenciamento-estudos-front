@@ -4,7 +4,7 @@ export default function Aside() {
   const router = useRouter();
 
   const menuItems = [
-    { label: "Tópicos", path: "/topicos" },
+
     { label: "Progresso", path: "/progresso" },
     { label: "Metas", path: "/metas" },
   ];

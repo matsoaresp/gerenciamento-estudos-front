@@ -17,7 +17,7 @@ export function MateriasForm({
     onChangeTitulo,
     onChangeDescricao,
     onClick,
-    className
+    className,
 }: MateriasFormProps) {
     return (
         <div >
